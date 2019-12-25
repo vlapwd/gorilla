@@ -1,7 +1,31 @@
-function App() {
-return (
-    <h1>domain test</h1>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: ''
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+
+  render() {
+    return (
+      <div>
+        <Gorilla tweet={this.state.value}/>
+      
+        <label>
+          <textarea value={this.state.value} onChange={this.handleChange} rows='5' cols='30' />
+        </label>
+      </div>
+    );
+  }
 }
-const target = document.querySelector('#app');
-ReactDOM.render(<App/>, target);
+
+ReactDOM.render(
+  <App />,
+  document.getElementById('app')
+);
